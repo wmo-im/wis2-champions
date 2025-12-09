@@ -10,6 +10,8 @@ The WIS2 Primer provides a "first stop" for all things WIS2, including, but not 
 
 ## Key documents
 
+These documents are essential reading.
+
 - [Manual on the WMO Information System, Volume II - WMO Information System 2.0](https://library.wmo.int/idurl/4/68731) ([GitHub](https://wmo-im.github.io/wis2-manual/manual/wis2-manual-APPROVED.html))
   - Appendix D. WIS2 Topic Hierarchy (WTH) ([GitHub](https://wmo-im.github.io/wcmp2/standard/wcmp2-STABLE.html))
   - Appendix E. WIS2 Notification Message (WNM) ([GitHub](https://wmo-im.github.io/wis2-notification-message/standard/wis2-notification-message-STABLE.html))
