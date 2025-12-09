@@ -28,7 +28,7 @@ These documents are essential reading.
 - [csv2bufr](https://github.com/wmo-im/csv2bufr): Python package to transform CSV data into the WMO BUFR format
 - [ecCodes](https://confluence.ecmwf.int/display/ECC): Python package providing API and tools for decoding and encoding messages in GRIB and BUFR
 - [pyoscar](https://github.com/wmo-cop/pyoscar): Pythonic API to WMO OSCAR
-- [pywcmp](https://github.com/World-Meteorological-Organization/pywcmp): Python package providing validation and quality assessment capabilities for the WMO WIS Core Metadata Profile versions 1 and 2 (WCMP, WCMP2)
+- [pywcmp](https://github.com/World-Meteorological-Organization/pywcmp): Python package providing validation and quality assessment capabilities for the WMO WIS Core Metadata Profile version 2 (WCMP2)
 - [pywis-pubsub](https://github.com/World-Meteorological-Organization/pywis-pubsub): Python package providing notification message publishing, subscription and data download capability in WIS2
 - [pywis-topics](https://github.com/World-Meteorological-Organization/pywis-topics): Python utility to work with the WIS2 Topic Hierarchy
 - [pywiscat](https://github.com/wmo-im/pywiscat): Pythonic API for the WIS2 Global Discovery Catalogue (GDC)
