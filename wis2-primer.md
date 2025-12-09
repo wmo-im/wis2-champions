@@ -35,6 +35,7 @@ These documents are essential reading.
 - [synop2bufr](https://github.com/wmo-im/synop2bufr): Python package to transform SYNOP data into the WMO BUFR format
 - [wis2box](https://github.com/World-Meteorological-Organization/wis2box): Reference Implementation of a WIS2 Node
 - [wis2downloader](https://github.com/World-Meteorological-Organization/wis2downloader): Python package for downloading real-time data from the WIS2 network
+- [wis2node-metadata-mgmt](https://github.com/wmo-cop/wis2node-metadata-mgmt): No-Code WIS2 Node metadata management and publication tool
 
 - Discovery metadata (WCMP2) validation and assessment services - [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi)
 - [WCMP2 metadata editor (DWD)](https://wis2.dwd.de/metadata-editor)
