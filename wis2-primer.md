@@ -23,20 +23,18 @@ The WIS2 Primer provides a "first stop" for all things WIS2, including, but not 
 
 ## Software and tools
 
-- [csv2bufr](https://github.com/wmo-im/csv2bufr)
-- [ecCodes](https://confluence.ecmwf.int/display/ECC)
-- [pyoscar](https://github.com/wmo-cop/pyoscar)
-- [pywcmp](https://github.com/World-Meteorological-Organization/pywcmp)
-- [pywis-pubsub](https://github.com/World-Meteorological-Organization/pywis-pubsub)
-- [pywis-topics](https://github.com/World-Meteorological-Organization/pywis-topics)
-- [pywiscat](https://github.com/wmo-im/pywiscat)
-- [synop2bufr](https://github.com/wmo-im/synop2bufr)
-- [wis2box](https://docs.wis2box.wis.wmo.int)
-- [wis2downloader](https://github.com/World-Meteorological-Organization/wis2downloader)
+- [csv2bufr](https://github.com/wmo-im/csv2bufr): Python package to transform CSV data into the WMO BUFR format
+- [ecCodes](https://confluence.ecmwf.int/display/ECC): Python package providing API and tools for decoding and encoding messages in GRIB and BUFR
+- [pyoscar](https://github.com/wmo-cop/pyoscar): Pythonic API to WMO OSCAR
+- [pywcmp](https://github.com/World-Meteorological-Organization/pywcmp): Python package providing validation and quality assessment capabilities for the WMO WIS Core Metadata Profile versions 1 and 2 (WCMP, WCMP2)
+- [pywis-pubsub](https://github.com/World-Meteorological-Organization/pywis-pubsub): Python package providing notification message publishing, subscription and data download capability in WIS2
+- [pywis-topics](https://github.com/World-Meteorological-Organization/pywis-topics): Python utility to work with the WIS2 Topic Hierarchy
+- [pywiscat](https://github.com/wmo-im/pywiscat): Pythonic API for the WIS2 Global Discovery Catalogue (GDC)
+- [synop2bufr](https://github.com/wmo-im/synop2bufr): Python package to transform SYNOP data into the WMO BUFR format
+- [wis2box](https://github.com/World-Meteorological-Organization/wis2box): Reference Implementation of a WIS2 Node
+- [wis2downloader](https://github.com/World-Meteorological-Organization/wis2downloader): Python package for downloading real-time data from the WIS2 network
 
-- Metadata validation and assessment services
-  - [MSC](https://wis2-gdc.weather.gc.ca/openapi)
-  - [DWD](https://wis2.dwd.de/gdc/openapi)
+- Discovery metadata (WCMP2) validation and assessment services - [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi)
 - [WCMP2 metadata editor (DWD)](https://wis2.dwd.de/metadata-editor)
 
 ## Documentation and learning resources
