@@ -40,6 +40,6 @@ These documents are essential reading.
 
 ## Documentation and learning resources
 
-- [WIS2 training workshop resources](https://etrp.wmo.int/course/section.php?id=4854)
+- [Latest WIS2 Training workshop resources (Ankara November 2026)](https://etrp.wmo.int/course/section.php?id=4854)
+- [WIS2 and wis2box training materials](https://training.wis2box.wis.wmo.int)
 - [wis2box documentation](https://docs.wis2box.wis.wmo.int)
-- [wis2box training](https://training.wis2box.wis.wmo.int)
