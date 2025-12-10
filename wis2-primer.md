@@ -26,18 +26,20 @@ These documents are essential reading.
 - [WIS Centres: NC, DCPCs and GISCs](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis/wis-centres-ncs-dcpcs-and-giscs)
 
 ## Software and tools
-- [ecCodes](https://confluence.ecmwf.int/display/ECC): Python package providing API and tools for decoding and encoding messages in GRIB and BUFR
 - [csv2bufr](https://github.com/wmo-im/csv2bufr): Python package to transform CSV data into the WMO BUFR format, using eccodes
-- [synop2bufr](https://github.com/wmo-im/synop2bufr): Python package to transform SYNOP data into the WMO BUFR format, using eccodes
+- [ecCodes](https://confluence.ecmwf.int/display/ECC): Python package providing API and tools for decoding and encoding messages in GRIB and BUFR
 - [pyoscar](https://github.com/wmo-cop/pyoscar): Pythonic API to WMO OSCAR
 - [pywcmp](https://github.com/World-Meteorological-Organization/pywcmp): Python package providing validation and quality assessment capabilities for the WMO WIS Core Metadata Profile version 2 (WCMP2)
 - [pywis-pubsub](https://github.com/World-Meteorological-Organization/pywis-pubsub): Python package providing notification message publishing, subscription and data download capability in WIS2
 - [pywis-topics](https://github.com/World-Meteorological-Organization/pywis-topics): Python utility to work with the WIS2 Topic Hierarchy
 - [pywiscat](https://github.com/wmo-im/pywiscat): Pythonic API for the WIS2 Global Discovery Catalogue (GDC)
+- [synop2bufr](https://github.com/wmo-im/synop2bufr): Python package to transform SYNOP data into the WMO BUFR format, using eccodes
 - [wis2box](https://github.com/World-Meteorological-Organization/wis2box): Reference Implementation of a WIS2 Node
 - [wis2downloader](https://github.com/World-Meteorological-Organization/wis2downloader): Python package for downloading real-time data from the WIS2 network
 - [wis2node-metadata-mgmt](https://github.com/wmo-cop/wis2node-metadata-mgmt): No-Code WIS2 Node metadata management and publication tool
-- Discovery metadata (WCMP2) online validation and assessment services - [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi)
+
+## Online tools
+- WCMP2 validator: [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi)
 - [WCMP2 metadata editor (DWD)](https://wis2.dwd.de/metadata-editor)
 
 ## Documentation and learning resources
