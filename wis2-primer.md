@@ -39,7 +39,7 @@ These documents are essential reading.
 - [wis2node-metadata-mgmt](https://github.com/wmo-cop/wis2node-metadata-mgmt): No-Code WIS2 Node metadata management and publication tool
 
 ## Online tools
-- WCMP2 validator: [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi)
+- WCMP2 validator: [MSC](https://wis2-gdc.weather.gc.ca/openapi), [DWD](https://wis2.dwd.de/gdc/openapi) (see [WIS2 Cookbook recipe](https://wmo-im.github.io/wis2-cookbook/cookbook/wis2-cookbook-DRAFT.html#_validating_a_wmo_core_metadata_profile_record) for instructions)
 - [WCMP2 metadata editor (DWD)](https://wis2.dwd.de/metadata-editor)
 
 ## Documentation and learning resources
