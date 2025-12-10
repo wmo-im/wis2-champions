@@ -21,8 +21,9 @@ These documents are essential reading.
 - [Provisions for the Transition from the WMO Information System (WIS) 1.0 and Global Telecommunication System to WIS 2.0](https://library.wmo.int/idurl/4/69050) ([GitHub](https://wmo-im.github.io/wis2-transition-guide/transition-guide/wis2-transition-guide-APPROVED.html))
 - [WMO Unified Data Policy for the International Exchange of Earth System Data (Resolution 1 (Cg-Ext(2021)))](http://library.wmo.int/idviewer/57850/15)
 - [WIS2 Cookbook (draft)](https://wmo-im.github.io/wis2-cookbook/cookbook/wis2-cookbook-DRAFT.html)
-
 - [WIS2 Global Services](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis/wis-20-global-services)
+- [Operational WIS2 Nodes](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis/operational-wis2-nodes)
+- [WIS Centres: NC, DCPCs and GISCs](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/wmo-information-system-wis/wis-centres-ncs-dcpcs-and-giscs)
 
 ## Software and tools
 - [ecCodes](https://confluence.ecmwf.int/display/ECC): Python package providing API and tools for decoding and encoding messages in GRIB and BUFR
