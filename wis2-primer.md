@@ -47,3 +47,5 @@ These documents are essential reading.
 - [Latest WIS2 Training workshop resources (Ankara November 2025)](https://etrp.wmo.int/course/section.php?id=4854)
 - [WIS2 and wis2box training materials](https://training.wis2box.wis.wmo.int)
 - [wis2box documentation](https://docs.wis2box.wis.wmo.int)
+- [Publishing data notifications in WIS2 (powerpoint)](https://github.com/wmo-im/wis2-champions/blob/main/wis2-publishing-data-notification-oct-2025-jtandy.pptx)
+- [Publishing discovery metadata in WIS2 (powerpoint)](https://github.com/wmo-im/wis2-champions/blob/main/wis2-publishing-metadata-oct-2025-jtandy.pptx)
