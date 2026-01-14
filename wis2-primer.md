@@ -49,3 +49,4 @@ These documents are essential reading.
 - [wis2box documentation](https://docs.wis2box.wis.wmo.int)
 - [Publishing data notifications in WIS2 (powerpoint)](https://github.com/wmo-im/wis2-champions/blob/main/wis2-publishing-data-notification-oct-2025-jtandy.pptx)
 - [Publishing discovery metadata in WIS2 (powerpoint)](https://github.com/wmo-im/wis2-champions/blob/main/wis2-publishing-metadata-oct-2025-jtandy.pptx)
+- [Introduction to MQTT by HiveMQ](https://github.com/wmo-im/wis2-champions/blob/main/hivemq-ebook-mqtt-essentials.pdf)
