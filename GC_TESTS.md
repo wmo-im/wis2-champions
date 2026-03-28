@@ -185,7 +185,7 @@ Prepared WIS2 Notification Messages:
    - `wmo_wis2_gc_downloaded_errors_total` (unchanged)
    - `wmo_wis2_gc_integrity_failed_total` (unchanged)
 
-**WIS2-to-GTS Gateway variant:** Provide 10 pairs of WNMs where each pair shares the same `data_id` and `pubtime`. The first WNM of each pair should have a bad method and/or value for `properties.integrity`; the second should be valid. The Global Cache should throw an error for the first WNM but successfully process the second. Pairs may include inline data.
+**WIS2-to-GTS Gateway variant:** Provide 10 pairs of WNMs where each pair shares the same `data_id` and `pubtime`. The first WNM of each pair should have a bad method and/or value for `properties.integrity`; the second should be valid. The Global Cache should throw an error for the first WNM but successfully process the second. Pairs of WNMs may include inline data.
 
 ---
 
@@ -213,7 +213,7 @@ Prepared WIS2 Notification Messages:
    - `wmo_wis2_gc_downloaded_errors_total` (unchanged)
    - `wmo_wis2_gc_integrity_failed_total` (unchanged)
 
-**WIS2-to-GTS Gateway variant:** Provide 10 pairs of WNMs where each pair shares the same `data_id`. The first WNM of each pair has `pubtime = {time}` and should be processed successfully. The second WNM of each pair has `pubtime = {time − x seconds}` (x could be 1 to 60 seconds or longer) and should be ignored. Pairs may include inline data.
+**WIS2-to-GTS Gateway variant:** Provide 10 pairs of WNMs where each pair shares the same `data_id`. The first WNM of each pair has `pubtime = {time}` and should be processed successfully. The second WNM of each pair has `pubtime = {time − x seconds}` (x could be 1 to 60 seconds or longer) and should be ignored. Pairs of WNMs may include inline data.
 
 ---
 
@@ -288,3 +288,49 @@ Prepared WIS2 Notification Messages and associated data objects:
 - Accompanying data object should be accessible via the canonical link provided in the WNM.
   - A larger than average data object should be generated/used in order to ensure that the clients downloading the data object concurrently do not finish before the test is complete. A 200MB data object will be used.
 - ApacheBench (ab) to manage the concurrent downloads.
+
+---
+
+## Additional Tests (not in original test-script) — Inline Data
+
+### Inline Data Retrieved OK
+
+The Global Cache should successfully process WNMs that contain inline data, extracting the data from the WNM and caching it.
+
+**Pre-requisites:**
+- Provide 10 WNMs with inline data.
+
+**Evaluate:**
+- Global Cache should successfully process the 10 WNMs, extracting the data from the WNM and caching it.
+
+---
+
+### Failure to Retrieve Inline Data, Success to Retrieve Data from URL
+
+Where inline data cannot be retrieved, the Global Cache should fall back to retrieving data via the remote URL.
+
+**Pre-requisites:**
+
+Provide 10 WNMs with:
+- Inline data, but a bad `size` attribute — this should force the Gateway to throw an error and then try to retrieve data via the remote URL.
+- No `properties.integrity` in the WNM. So, `size` is the only option to verify the embedded data is not correct.
+- A resolvable URL for the canonical data — this data should be processed.
+
+**Evaluate:**
+- Global Cache should trigger an error (for inline retrieval); data published (for URL retrieval).
+
+---
+
+### Failure to Retrieve Inline Data, Failure to Retrieve Data from URL
+
+Where both inline data retrieval and remote URL retrieval fail, no data should be published.
+
+**Pre-requisites:**
+
+Provide 10 WNMs with:
+- Inline data, but a bad `size` attribute — this should force the Gateway to throw an error and then try to retrieve data via the remote URL.
+- A bad (unresolvable) URL for the canonical data — this should force the Gateway to throw an error; this data cannot be retrieved.
+
+**Evaluate:**
+- Global Cache should trigger an error (for inline retrieval and for URL retrieval); no data published.
+
