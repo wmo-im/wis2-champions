@@ -101,3 +101,5 @@ Centre-id: `ca-eccc-msc-global-replay`
 Exploring further: using the [MQTT-SUBSCRIBER-WEB](https://github.com/wmo-im/wis2-champions/blob/main/Bali-workshop-MAR2026/GREP_TEST_CLIENT.md) application to test the GRep service.
 
 > Note: there are still some issues with the GRep implementation — can you see what they are?
+
+> Note: GRep server may be configured to discard messages from GTS-to-WIS2 Gateways
