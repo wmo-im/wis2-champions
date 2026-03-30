@@ -240,6 +240,8 @@ scrape_configs:
             - targets: ['scgc:1880']
 ```
 
+> TODO: *** CHECK THE METRICS_PATH: `/admin/metrics`, `/metrics`, or `/prometheus/metrics` ***
+
 Now restart the Prometheus container:
 
 ```bash
