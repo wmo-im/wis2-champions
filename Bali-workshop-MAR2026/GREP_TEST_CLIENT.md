@@ -8,6 +8,15 @@
 
 ---
 
+## TO-DO
+
+This application is a work in progress by @6a6d74. Enhancements/fixes being considered include:
+
+- Improve the metrics publication (they're currently non-functional)
+- Support multi-user access (application is currently single-user only - you have to run your own instance)
+
+---
+
 ## Description
 
 ### MQTT Subscriber Web
