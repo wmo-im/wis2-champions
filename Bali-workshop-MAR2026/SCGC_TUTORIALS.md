@@ -210,6 +210,32 @@ docker compose -f scgc.yml up -d
 
 > TODO: *** CHECK THIS IS WORKING: need build for linux/amd64 platform ***
 
+#### Access Node-Red and metrics end-points via browser
+
+SCGC is a Node-Red application with a Prometheus metrics end-point. The configuration above **does not** expose any ports externally (e.g., visible via a browser). If you want to access the Node-Red Web-client (for example, to view and interogate running flows) or see the metrics you will need to set up a SSH tunnel.
+
+The command to create an SSH tunnel is: 
+
+```bash
+ssh -L local_port:remote_host:remote_port user@ssh_server
+```
+
+SCGC runs on port 1880. To expose this port on your local machine:
+
+```bash
+ssh -L 1880:[YOUR_NAME].champion.wis2dev.io:1880 [YOUR_NAME]@[YOUR_NAME].champion.wis2dev.io
+```
+
+Then you should be able to access via browser:
+
+- Node-Red: http://127.0.0.1:1180/
+- Metrics: http://127.0.0.1:1180/metrics
+
+> TODO: *** CHECK THIS IS WORKING: ssh tunnel set up, port number, access URLs ***
+
+(Alternatively, for Windows machines set up a tunnel using PuTTY)
+ssh -L 6379:localhost:6379 user@myserver.example.com 
+
 ---
 
 ### Add a Scrape Job to Prometheus
