@@ -226,9 +226,11 @@ SCGC runs on port 1880. To expose this port on your local machine:
 ssh -L 1880:[YOUR_NAME].champion.wis2dev.io:1880 [YOUR_NAME]@[YOUR_NAME].champion.wis2dev.io
 ```
 
+Change the `local_port` as needed to avoid conflicts.
+
 Then you should be able to access via browser:
 
-- Node-Red: http://127.0.0.1:1180/
+- Node-Red: http://127.0.0.1:1180/admin
 - Metrics: http://127.0.0.1:1180/metrics
 
 > TODO: *** CHECK THIS IS WORKING: ssh tunnel set up, port number, access URLs ***
