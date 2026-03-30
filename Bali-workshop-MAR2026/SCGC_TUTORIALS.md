@@ -260,6 +260,8 @@ Increase in the total number of messages published by all WIS2 Node origins over
 sum(increase(wmo_wis2_scgc_messages_published_total[1h]))
 ```
 
+What GC behaviours can you investigate/diagnose with the SCGC metrics using Prometheus and/or Grafana?
+
 ---
 
 ## Build Some Grafana Dashboards
