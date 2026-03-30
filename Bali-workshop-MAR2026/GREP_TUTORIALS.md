@@ -18,6 +18,8 @@ Centre-id: `ca-eccc-msc-global-replay`
 3. [API endpoint — Browse notification messages on specific topic (and sub-topics)](https://wis2-grep.weather.gc.ca/collections/wis2-notification-messages/items?topic=origin/a/wis2/us-noaa-nws)
 4. [More queries](https://github.com/wmo-im/wis2-grep?tab=readme-ov-file#api-queries)
 
+Explore where messages are being published in the world - messages have geo-location!
+
 ---
 
 ### MQTT Fetch (Asynchronous Request)
