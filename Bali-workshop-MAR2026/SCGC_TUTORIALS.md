@@ -211,7 +211,7 @@ networks:
 
 No updates needed for the traefik network because the SCGC is accessed by the local Prometheus instance.
 
-We want the SCGC to be externally visible on /scgc rather than the default. Add `settings.js` configuration with `httpAdminRoot: "/scgc"`:
+We want the SCGC to be externally visible on /scgc rather than the default. Add `settings.js` configuration with `httpAdminRoot: "/scgc"` and `httpNodeRoot: "/scgc"`:
 
 `[YOUR_PATH]/docker/scgc/settings.js`
 
@@ -221,6 +221,7 @@ module.exports = {
     nodesDir: '/data/nodes',
     flowFile: 'flows.json',
     httpAdminRoot: "/scgc",
+    httpNodeRoot: "/scgc",
     credentialSecret: false,
 };
 ```
@@ -233,7 +234,10 @@ Now run the scgc container:
 docker compose -f scgc.yml up -d
 ```
 
-You can access the Node-Red web application to see and interact with the SCGC flows at: https://jeremy.champion.wis2dev.io/scgc
+You can access the Node-Red web application to see and interact with the SCGC flows and metrics:
+
+- Node-Red flows: `https://[YOUR_NAME].champion.wis2dev.io/scgc`
+- Prometheus metrics: `https://[YOUR_NAME].champion.wis2dev.io/scgc/metrics`
 
 > Note: You will need to authenticate with the username and password you configured earlier.
 
