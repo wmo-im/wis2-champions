@@ -230,6 +230,10 @@ Now run the scgc container:
 docker compose -f scgc.yml up -d
 ```
 
+You can access the Node-Red web application to see and interact with the SCGC flows at: https://jeremy.champion.wis2dev.io/scgc
+
+> Note: You will need to authenticate with the username and password you configured earlier.
+
 ---
 
 ### Add a Scrape Job to Prometheus
