@@ -192,6 +192,8 @@ services:
       - CACHE_DELAY_MED=600
       - CACHE_DELAY_MAX=1200
       - WNM_LOGGING=False
+    volumes:
+      - [YOUR_PATH]/docker/scgc/settings.js:/data/settings.js:ro
     networks:
       - traefik
     restart: unless-stopped
@@ -200,41 +202,33 @@ networks:
     external: true
 ```
 
+  volumes:                                                                                                                                                                                                     
+    - /home/jeremy/docker/scgc/settings.js:/data/settings.js:ro
+
+
 No updates needed for the traefik network because the SCGC is accessed by the local Prometheus instance.
+
+We want the SCGC to be externally visible on /scgc rather than the default. Add `settings.js` configuration with `httpAdminRoot: "/scgc"`:
+
+`[YOUR_PATH]/docker/scgc/settings.js`
+
+```json
+module.exports = {
+    userDir: '/data/',
+    nodesDir: '/data/nodes',
+    flowFile: 'flows.json',
+    httpAdminRoot: "/scgc",
+    credentialSecret: false,
+};
+```
+
+> Note: You may notice that the docker compose file includes a volume mount in `compose/scgc.yml` to inject that settings file.
 
 Now run the scgc container:
 
 ```bash
 docker compose -f scgc.yml up -d
 ```
-
-#### Access Node-Red and metrics end-points via browser
-
-SCGC is a Node-Red application with a Prometheus metrics end-point. The configuration above **does not** expose any ports externally (e.g., visible via a browser). If you want to access the Node-Red Web-client (for example, to view and interogate running flows) or see the metrics you will need to set up a SSH tunnel.
-
-The command to create an SSH tunnel is: 
-
-```bash
-ssh -L local_port:remote_host:remote_port user@ssh_server
-```
-
-SCGC runs on port 1880. To expose this port on your local machine:
-
-```bash
-ssh -L 1880:[YOUR_NAME].champion.wis2dev.io:1880 [YOUR_NAME]@[YOUR_NAME].champion.wis2dev.io
-```
-
-Change the `local_port` as needed to avoid conflicts.
-
-Then you should be able to access via browser:
-
-- Node-Red: http://127.0.0.1:1180/admin
-- Metrics: http://127.0.0.1:1180/metrics
-
-> TODO: *** CHECK THIS IS WORKING: ssh tunnel set up, port number, access URLs ***
-
-(Alternatively, for Windows machines set up a tunnel using PuTTY)
-ssh -L 6379:localhost:6379 user@myserver.example.com 
 
 ---
 
