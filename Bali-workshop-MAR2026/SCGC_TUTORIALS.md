@@ -150,7 +150,7 @@ http://prometheus:9090/prometheus
 services:
   sensorglobalcache:
     container_name: scgc
-    image: golfvert/scgc:1.4.7
+    image: golfvert/scgc:1.4.8
     environment:
       - TZ=Europe/Paris
       - MQTT_GB1_BROKER=mqtts://globalbroker.meteo.fr:8883
@@ -207,8 +207,6 @@ Now run the scgc container:
 ```bash
 docker compose -f scgc.yml up -d
 ```
-
-> TODO: *** CHECK THIS IS WORKING: need build for linux/amd64 platform ***
 
 #### Access Node-Red and metrics end-points via browser
 
