@@ -40,6 +40,8 @@ There are 6 Global Caches:
 
 ### Configure a Connection to a Global Cache Broker
 
+Use MQTT Explorer
+
 | Field | Value |
 |-------|-------|
 | Name | `{xxx-global-cache}` |
