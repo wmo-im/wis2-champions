@@ -192,8 +192,6 @@ services:
       - CACHE_DELAY_MED=600
       - CACHE_DELAY_MAX=1200
       - WNM_LOGGING=False
-    volumes:
-      - [YOUR_PATH]/docker/scgc/settings.js:/data/settings.js:ro
     labels:
       traefik.enable: true
       traefik.http.routers.scgc.entrypoints: websecure
