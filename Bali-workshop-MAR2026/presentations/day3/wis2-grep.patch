@@ -1,0 +1,92 @@
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 320cad4..e45394e 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -57,7 +57,7 @@ services:
+       interval: 1m
+       retries: 100
+     networks:
+-      - wis2-grep-net
++      - traefik
+     <<: *logging
+ 
+   wis2-grep-cache:
+@@ -71,7 +71,7 @@ services:
+       interval: 5s
+       retries: 100
+     networks:
+-      - wis2-grep-net
++      - traefik
+     <<: *logging
+ 
+   wis2-grep-broker:
+@@ -82,7 +82,7 @@ services:
+     env_file:
+       - wis2-grep.env
+     networks:
+-      - wis2-grep-net
++      - traefik
+     <<: *logging
+ 
+   wis2-grep-management:
+@@ -107,7 +107,7 @@ services:
+     restart: always
+     command: ["/venv/bin/pywis-pubsub", "subscribe", "--config", "/app/docker/pywis-pubsub.yml", "--verbosity", "DEBUG"]
+     networks:
+-      - wis2-grep-net
++      - traefik
+     <<: *logging
+ 
+   wis2-grep-api:
+@@ -128,12 +128,30 @@ services:
+       - wis2-grep.env
+     restart: unless-stopped
+     networks:
+-      - wis2-grep-net
++      - traefik
+     <<: *logging
++    labels:
++      traefik.enable: true
++
++      traefik.http.routers.wis2-grep.entrypoints: websecure
++      traefik.http.routers.wis2-grep.rule: Host("CHANGE_ME.champion.wis2dev.io") && PathPrefix("/wis2-grep")
++      traefik.http.routers.wis2-grep.tls.certresolver: letsencrypt
++
++      traefik.http.services.wis2-grep.loadbalancer.server.port: 8080
++      traefik.http.services.wis2-grep.loadbalancer.server.scheme: http
++
++      traefik.http.routers.wis2-grep.middlewares: wis2-grep-stripprefix,wis2-grep-headers
++
++      traefik.http.middlewares.wis2-grep-stripprefix.stripprefix.prefixes: /wis2-grep
++
++      traefik.http.middlewares.wis2-grep-headers.headers.browserXssFilter: true
++      traefik.http.middlewares.wis2-grep-headers.headers.contentTypeNosniff: true
++      traefik.http.middlewares.wis2-grep-headers.headers.frameDeny: true
+ 
+ volumes:
+   wis2-grep-backend-data:
+   wis2-grep-management-data:
+ 
+ networks:
+-  wis2-grep-net:
++  traefik:
++    external: true
+diff --git a/wis2-grep.env b/wis2-grep.env
+index c1e15ac..c18ddc8 100644
+--- a/wis2-grep.env
++++ b/wis2-grep.env
+@@ -1,12 +1,12 @@
+ export WIS2_GREP_LOGGING_LEVEL=DEBUG
+-export WIS2_GREP_API_URL=http://localhost:8000
++export WIS2_GREP_API_URL=https://CHANGE_ME.champion.wis2dev.io/wis2-grep
+ export WIS2_GREP_API_URL_DOCKER=http://wis2-grep-api:8080
+ export WIS2_GREP_BACKEND_TYPE=Elasticsearch
+ export WIS2_GREP_BACKEND_CONNECTION="http://wis2-grep-backend:9200/wis2-notification-messages.*"
+ export WIS2_GREP_BROKER_URL=mqtt://wis2-grep:wis2-grep@wis2-grep-broker:1883
+ export WIS2_GREP_CACHE_URL=redis://wis2-grep-cache:6379
+ export WIS2_GREP_CACHE_RETENTION_SECONDS=3600
+-export WIS2_GREP_CENTRE_ID=ca-eccc-msc-global-replay
++export WIS2_GREP_CENTRE_ID=io-wis2dev-champion-CHANGE_ME-global-replay
+ export WIS2_GREP_GB=mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+ export WIS2_GREP_GB_PUBLISH=mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+ export WIS2_GREP_MESSAGE_RETENTION_HOURS=3
