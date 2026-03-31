@@ -201,6 +201,8 @@ services:
       traefik.http.services.scgc.loadbalancer.server.port: 1880
       traefik.http.services.scgc.loadbalancer.server.scheme: http
       traefik.http.routers.scgc.tls: true
+      traefik.http.middlewares.scgc-strip.stripprefix.prefixes: "/scgc"
+      traefik.http.routers.scgc.middlewares: scgc-strip
     networks:
       - traefik
     restart: unless-stopped
@@ -211,22 +213,9 @@ networks:
 
 No updates needed for the traefik network because the SCGC is accessed by the local Prometheus instance.
 
-We want the SCGC to be externally visible on /scgc rather than the default. Add `settings.js` configuration with `httpAdminRoot: "/scgc"` and `httpNodeRoot: "/scgc"`:
+To make the SCGC to be externally visible on `/scgc` we use the traefik middleware `stripprefix` which removes the "`/scgc`" token from the URL used in the browser before passing requests to the SCGC container. 
 
-`[YOUR_PATH]/docker/scgc/settings.js`
-
-```json
-module.exports = {
-    userDir: '/data/',
-    nodesDir: '/data/nodes',
-    flowFile: 'flows.json',
-    httpAdminRoot: "/scgc",
-    httpNodeRoot: "/scgc",
-    credentialSecret: false,
-};
-```
-
-> Note: You may notice that the docker compose file includes a volume mount in `compose/scgc.yml` to inject that settings file.
+> Note: We have not provided a `settings.js` for the SCGC container so Node-Red will use its default path `/admin` to access the flows. Combining with the prefix, Node-Red flows are accessed on `/scgc/admin`. 
 
 Now run the scgc container:
 
@@ -236,7 +225,7 @@ docker compose -f scgc.yml up -d
 
 You can access the Node-Red web application to see and interact with the SCGC flows and metrics:
 
-- Node-Red flows: `https://[YOUR_NAME].champion.wis2dev.io/scgc`
+- Node-Red flows: `https://[YOUR_NAME].champion.wis2dev.io/scgc/admin`
 - Prometheus metrics: `https://[YOUR_NAME].champion.wis2dev.io/scgc/metrics`
 
 > Note: You will need to authenticate with the username and password you configured earlier.
