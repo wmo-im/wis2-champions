@@ -1,0 +1,111 @@
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 29826c5..2d87044 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -57,7 +57,7 @@ services:
+       interval: 5s
+       retries: 100
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
+ 
+   prometheus:
+@@ -66,7 +66,7 @@ services:
+     volumes:
+       - ./wis2-gdc-monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
+ 
+   grafana:
+@@ -75,7 +75,7 @@ services:
+     env_file:
+       - wis2-gdc.env
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     volumes:
+       - ./wis2-gdc-monitoring/grafana/datasource.yml:/etc/grafana/provisioning/datasources/grafana-datasource.yml
+     environment:
+@@ -105,7 +105,7 @@ services:
+       interval: 5s
+       retries: 100
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
+ 
+   wis2-gdc-broker:
+@@ -116,7 +116,7 @@ services:
+     env_file:
+       - wis2-gdc.env
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
+ 
+   wis2-gdc-metrics-collector:
+@@ -127,7 +127,7 @@ services:
+     env_file:
+       - wis2-gdc.env
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     depends_on:
+       - wis2-gdc-broker
+     <<: *logging
+@@ -154,7 +154,7 @@ services:
+     restart: always
+     command: ["/venv/bin/pywis-pubsub", "subscribe", "--config", "/app/docker/pywis-pubsub.yml", "--verbosity", "DEBUG"]
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
+ 
+   wis2-gdc-api:
+@@ -174,12 +174,30 @@ services:
+       - wis2-gdc.env
+     restart: unless-stopped
+     networks:
+-      - wis2-gdc-net
++      - traefik
+     <<: *logging
++    labels:
++      traefik.enable: true
++
++      traefik.http.routers.wis2-gdc.entrypoints: websecure
++      traefik.http.routers.wis2-gdc.rule: Host("CHANGE_ME.champion.wis2dev.io") && PathPrefix("/wis2-gdc")
++      traefik.http.routers.wis2-gdc.tls.certresolver: letsencrypt
++
++      traefik.http.services.wis2-gdc.loadbalancer.server.port: 8080
++      traefik.http.services.wis2-gdc.loadbalancer.server.scheme: http
++
++      traefik.http.routers.wis2-gdc.middlewares: wis2-gdc-stripprefix,wis2-gdc-headers
++
++      traefik.http.middlewares.wis2-gdc-stripprefix.stripprefix.prefixes: /wis2-gdc
++
++      traefik.http.middlewares.wis2-gdc-headers.headers.browserXssFilter: true
++      traefik.http.middlewares.wis2-gdc-headers.headers.contentTypeNosniff: true
++      traefik.http.middlewares.wis2-gdc-headers.headers.frameDeny: true
+ 
+ volumes:
+   wis2-gdc-backend-data:
+   wis2-gdc-management-data:
+ 
+ networks:
+-  wis2-gdc-net:
++  traefik:
++    external: true
+diff --git a/wis2-gdc.env b/wis2-gdc.env
+index 815f1f0..e3bafd2 100644
+--- a/wis2-gdc.env
++++ b/wis2-gdc.env
+@@ -1,5 +1,5 @@
+ export WIS2_GDC_LOGGING_LEVEL=DEBUG
+-export WIS2_GDC_API_URL=http://localhost:8000
++export WIS2_GDC_API_URL=https://CHANGE_ME.champion.wis2dev.io/wis2-gdc
+ export WIS2_GDC_API_URL_DOCKER=http://wis2-gdc-api:8080
+ export WIS2_GDC_BACKEND_TYPE=Elasticsearch
+ export WIS2_GDC_BACKEND_CONNECTION=http://wis2-gdc-backend:9200/wis2-discovery-metadata
