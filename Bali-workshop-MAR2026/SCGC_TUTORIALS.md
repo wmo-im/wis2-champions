@@ -261,12 +261,10 @@ scrape_configs:
             - targets: ['scgb:1880']
   - job_name: 'SCGC'
     scheme: http
-    metrics_path: '/admin/metrics'
+    metrics_path: '/metrics'
     static_configs:
             - targets: ['scgc:1880']
 ```
-
-> TODO: *** CHECK THE METRICS_PATH: `/admin/metrics`, `/metrics`, or `/prometheus/metrics` ***
 
 Now restart the Prometheus container:
 
