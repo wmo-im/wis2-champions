@@ -194,6 +194,13 @@ services:
       - WNM_LOGGING=False
     volumes:
       - [YOUR_PATH]/docker/scgc/settings.js:/data/settings.js:ro
+    labels:
+      traefik.enable: true
+      traefik.http.routers.scgc.entrypoints: websecure
+      traefik.http.routers.scgc.rule: Host(`jeremy.champion.wis2dev.io`) && PathPrefix(`/scgc`)
+      traefik.http.services.scgc.loadbalancer.server.port: 1880
+      traefik.http.services.scgc.loadbalancer.server.scheme: http
+      traefik.http.routers.scgc.tls: true
     networks:
       - traefik
     restart: unless-stopped
@@ -201,10 +208,6 @@ networks:
   traefik:
     external: true
 ```
-
-  volumes:                                                                                                                                                                                                     
-    - /home/jeremy/docker/scgc/settings.js:/data/settings.js:ro
-
 
 No updates needed for the traefik network because the SCGC is accessed by the local Prometheus instance.
 
