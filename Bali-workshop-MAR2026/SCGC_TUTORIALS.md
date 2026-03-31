@@ -186,7 +186,7 @@ services:
       - MQTT_GC_6_USERNAME=everyone
       - MQTT_GC_6_PASSWORD=Everyone@100081&
       - GC_6_ID=cn-cma-global-cache
-      - SENSOR_CENTRE_ID=[YOUR_NAME]-sensor-centre-global-cache
+      - SENSOR_CENTRE_ID=io-wis2dev-[YOUR_NAME]-sensor-centre-global-cache
       - REDIS_URL=redis:6379
       - CACHE_DELAY_LOW=120
       - CACHE_DELAY_MED=600
