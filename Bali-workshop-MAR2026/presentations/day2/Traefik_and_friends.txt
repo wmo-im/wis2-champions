@@ -1,0 +1,117 @@
+# Add user to docker group to run docker without sudo
+# Then, quit and re-connect to activate 
+sudo usermod -aG docker MY_OWN_USER
+
+# Test docker access
+docker ps
+
+# Test docker with hello-world container
+docker run hello-world
+
+# Check current directory - should be home directory of MY_OWN_USER
+pwd
+
+# Prepare 
+
+# Install useful software
+sudo apt install jq apache2-utils
+
+# Create docker directory structure
+cd
+mkdir docker docker/compose docker/traefik docker/traefik/dynamic 
+
+# Copy the tpg.tar into home directory
+# Extract its content
+tar xvf tpg.tar
+
+# Create traefik network for services
+docker network create traefik
+
+# Create Traefik static configuration file 
+cd docker/traefik
+
+# Copy and then edit traefik.yml
+cp ../../tmp/docker/traefik/traefik.yml .
+# Change the email address in traefik.yml (see CHANGE_ME)
+
+# Create acme.json file for Let's Encrypt certificates
+touch acme.json
+
+# Set correct permissions for acme.json (required by Traefik)
+chmod 0600 acme.json
+
+# Go to compose directory 
+cd ../compose
+
+cp ../../tmp/docker/compose/traefik.yml .
+# Copy traefik.yml to the compose directory and 
+# Adjust the configuration (see all CHANGE_ME) and update the traefik version if needed
+
+# Start Traefik using docker-compose
+docker compose -f traefik.yml up -d
+
+# Wait for a bit of time and check acme.json file. You should have the certs created.
+cd ../traefik/
+ls -lia
+more acme.json
+
+# Create middlewares configuration file
+cp  ../../tmp/docker/traefik/dynamic/middlewares.yml dynamic/middlewares.yml
+# Adjust the configuration (see CHANGE_ME) in the `cors:` section
+
+
+# Create users file for basic auth
+touch dynamic/users.txt
+
+# Generate password hash for user MY_OWN_USER
+htpasswd -nB MY_OWN_USER
+# Copy the output of htpasswd command in dynamic/users.txt
+# Wait for 30s
+
+
+# Try accessing traefik dashboard https://MY_OWN_HOST/dashboard/
+# Use the user/pwd defined above. Note that the lock should be closed.
+
+# Prometheus
+
+cd 
+mkdir docker/prometheus docker/prometheus/prometheus-data
+chmod 0777 docker/prometheus/prometheus-data
+cd docker/prometheus
+cp ../../tmp/docker/prometheus/prometheus.yml .
+
+# Go to compose directory to modify docker-compose file - adjust the configuration (see CHANGE_ME) to your directories and update the prometheus version if needed
+cd ../compose
+cp ../../tmp/docker/compose/prometheus.yml .
+docker compose -f prometheus.yml up -d
+
+# connect with https://MY_OWN_HOST/prometheus/ user/passwd is the same as traefik.
+
+# Grafana
+
+cd 
+mkdir docker/grafana
+cd docker/compose
+
+# Modify docker-compose file - adjust the configuration (see CHANGE_ME) to your directories and update the grafana version if needed - change uid and gid in the "user" line
+cp ../../tmp/docker/compose/grafana.yml .
+
+docker compose -f grafana.yml up -d
+
+# Wait for 30s for grafan to be ready
+# connect with https://MY_OWN_HOST/grafana/ 
+# Default user/passwd is admin/admin  
+# Add Data Source in Grafana - Hamburger menu on the left, Connections, Data Sources, Add new source, Select prometheus and in the Prometheus server URL add: http://prometheus:9090/prometheus
+
+# Stop here in the morning session
+
+# Sensor Centre Global Broker
+# Check that you are still in the docker/compose directory if not
+
+cd
+cd docker/compose
+cp ../../tmp/docker/compose/scgb.yml .
+
+# Modify docker-compose file - adjust the configuration (see CHANGE_ME)
+
+docker compose -f scgb.yml up -d
