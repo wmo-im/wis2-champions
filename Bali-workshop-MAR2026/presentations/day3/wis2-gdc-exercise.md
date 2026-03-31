@@ -1,6 +1,5 @@
 # wis2-gdc install, configure, deploy, initialize
 
-
 - stop Prometheus, Grafana, scgb services
 - ensure traefik still running on your VM (`docker ps | grep traefik`)
 

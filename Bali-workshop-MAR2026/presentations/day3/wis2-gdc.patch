@@ -99,13 +99,21 @@ index 29826c5..2d87044 100644
 +  traefik:
 +    external: true
 diff --git a/wis2-gdc.env b/wis2-gdc.env
-index 815f1f0..e3bafd2 100644
+index 815f1f0..07e45d5 100644
 --- a/wis2-gdc.env
 +++ b/wis2-gdc.env
-@@ -1,5 +1,5 @@
+@@ -1,12 +1,12 @@
  export WIS2_GDC_LOGGING_LEVEL=DEBUG
 -export WIS2_GDC_API_URL=http://localhost:8000
 +export WIS2_GDC_API_URL=https://CHANGE_ME.champion.wis2dev.io/wis2-gdc
  export WIS2_GDC_API_URL_DOCKER=http://wis2-gdc-api:8080
  export WIS2_GDC_BACKEND_TYPE=Elasticsearch
  export WIS2_GDC_BACKEND_CONNECTION=http://wis2-gdc-backend:9200/wis2-discovery-metadata
+ export WIS2_GDC_BROKER_URL=mqtt://wis2-gdc:wis2-gdc@wis2-gdc-broker:1883
+ export WIS2_GDC_CACHE_URL=redis://wis2-gdc-cache:6379
+ export WIS2_GDC_CACHE_RETENTION_SECONDS=3600
+-export WIS2_GDC_CENTRE_ID=ca-eccc-msc-global-discovery-catalogue
++export WIS2_GDC_CENTRE_ID=io-wis2dev-champion-CHANGE_ME-global-discovery-catalogue
+ export WIS2_GDC_COLLECTOR_URL=http://wis2-gdc-metrics-collector:8006
+ export WIS2_GDC_GB=mqtts://everyone:everyone@globalbroker.meteo.fr:8883
+ #export WIS2_GDC_GB=${WIS2_GDC_BROKER_URL}
