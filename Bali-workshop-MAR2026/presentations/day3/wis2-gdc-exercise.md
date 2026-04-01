@@ -1,9 +1,17 @@
 # wis2-gdc install, configure, deploy, initialize
 
-- stop Prometheus, Grafana, scgb services
-- ensure traefik still running on your VM (`docker ps | grep traefik`)
-
 ```bash
+
+# if you don't have make installed already, install it now
+sudo apt update && sudo apt install make -y
+
+# stop Prometheus, Grafana, scgb services
+docker stop grafana prometheus
+docker rm grafana prometheus
+
+# ensure traefik still running on your VM
+docker ps | grep traefik
+
 cd
 
 # download wis2-gdc via GitHub repository clone
@@ -20,9 +28,6 @@ vi wis2-gdc.env
 # replace CHANGE_ME with your VM username
 vi docker-compose.yml
 # replace CHANGE_ME with your VM username
-
-# if you don't have make installed already - install it now
-sudo apt update && sudo apt install make
 
 # build wis2-gdc
 make build
