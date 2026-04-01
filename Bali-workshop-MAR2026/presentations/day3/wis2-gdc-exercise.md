@@ -21,6 +21,9 @@ vi wis2-gdc.env
 vi docker-compose.yml
 # replace CHANGE_ME with your VM username
 
+# if you don't have make installed already - install it now
+sudo apt update && sudo apt install make
+
 # build wis2-gdc
 make build
 
