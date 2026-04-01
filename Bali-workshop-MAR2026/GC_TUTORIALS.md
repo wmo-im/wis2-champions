@@ -58,10 +58,9 @@ Use MQTT Explorer
 ```
 cache/a/wis2/#
 ```
+<a href="data-metoffice-noaa-global-cache-mqtt-connection.png"><img alt="data-metoffice-noaa-global-cache connection details for MQTT explorer" src="data-metoffice-noaa-global-cache-mqtt-connection.png" width="800"/></a>
 
-Image: [data-metoffice-noaa-global-cache connection details for MQTT explorer](https://github.com/wmo-im/wis2-champions/blob/main/Bali-workshop-MAR2026/data-metoffice-noaa-global-cache-mqtt-connection.png)
-
-Now investigate some of the messages being received.
+Now investigate some of the messages being received...
 
 ---
 
