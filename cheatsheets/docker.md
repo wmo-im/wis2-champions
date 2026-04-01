@@ -81,8 +81,17 @@ docker ps -a
 
     use `docker ps` to use the container id in the command below
 
+* Get a shell in the container
+  
 ```bash
-docker exec -it my-container /bin/bash
+docker exec -it my-container /bin/sh
+```
+
+
+* Stop a container
+
+```bash
+docker stop my-container
 ```
 
 * Remove a container
