@@ -138,8 +138,6 @@ http://prometheus:9090/prometheus
 
 > `http` because the service is internal on the traefik network; `/prometheus` because this was the `PathPrefix` used in the Prometheus docker compose.
 
-> TODO: *** CHECK THIS IS WORKING ***
-
 ---
 
 ### Deploy Sensor Centre Global Cache Container
@@ -284,7 +282,7 @@ What GC behaviours can you investigate/diagnose with the SCGC metrics using Prom
 
 ## Build Some Grafana Dashboards
 
-Image: [Global Cache performance dashboard](https://github.com/wmo-im/wis2-champions/blob/main/Bali-workshop-MAR2026/global-cache-performance-dashboard.png)
+<a href="global-cache-performance-dashboard.png"><img alt="Global Cache Performance Grafana Dashboard" src="global-cache-performance-dashboard.png" width="800"/></a>
 
 - **Top panel:** Total number of `data_id` (unique data objects) published by all WIS2 Nodes within the previous hour.
 - **Bottom panel:** Percentage of unique data objects (`data_id`) that are missed by each Global Cache. Calculated using increment over the last 1-hour of metrics `wmo_wis2_scgc_messages_missed_total` divided by `wmo_wis2_scgc_published_total`.
