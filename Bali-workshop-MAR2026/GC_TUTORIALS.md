@@ -45,7 +45,7 @@ Use MQTT Explorer
 | Field | Value |
 |-------|-------|
 | Name | `{xxx-global-cache}` |
-| Validate certificate | yes |
+| Validate certificate | no |
 | Encryption (tls) | yes |
 | Protocol | `mqtt://` |
 | Host | `{GLOBAL_CACHE_HOST}` |
