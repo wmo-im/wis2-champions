@@ -11,7 +11,7 @@ git clone https://github.com/wmo-im/wis2-gdc.git
 cd wis2-gdc
 
 # download required configuration updates
-curl –O https://raw.githubusercontent.com/wmo-im/wis2-champions/refs/heads/main/Bali-workshop-MAR2026/presentations/day3/wis2-gdc.patch
+curl –O https://raw.githubusercontent.com/wmo-im/wis2-champions/refs/heads/main/Bali-workshop-MAR2026/presentations/day3/wis2-gdc.patch > wis2-gdc.patch
 # apply configuration updates as a git patch
 git apply wis2-gdc.patch
 
