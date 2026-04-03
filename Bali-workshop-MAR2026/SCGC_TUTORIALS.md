@@ -221,8 +221,8 @@ docker compose -f scgc.yml up -d
 
 You can access the Node-Red web application to see and interact with the SCGC flows and metrics:
 
-- Node-Red flows: `https://[YOUR_NAME].champion.wis2dev.io/scgc/admin`
-- Prometheus metrics: `https://[YOUR_NAME].champion.wis2dev.io/scgc/metrics`
+- Node-Red flows: `https://[YOUR_NAME].champion.wis2dev.io/scgc/admin/`
+- Prometheus metrics: `https://[YOUR_NAME].champion.wis2dev.io/scgc/metrics/`
 
 > Note: You will need to authenticate with the username and password you configured earlier.
 
