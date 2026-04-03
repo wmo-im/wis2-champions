@@ -193,7 +193,7 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.scgc.entrypoints: websecure
-      traefik.http.routers.scgc.rule: Host(`jeremy.champion.wis2dev.io`) && PathPrefix(`/scgc`)
+      traefik.http.routers.scgc.rule: Host(`[YOUR_NAME].champion.wis2dev.io`) && PathPrefix(`/scgc`)
       traefik.http.services.scgc.loadbalancer.server.port: 1880
       traefik.http.services.scgc.loadbalancer.server.scheme: http
       traefik.http.routers.scgc.tls: true
