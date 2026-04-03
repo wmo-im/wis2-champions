@@ -1,5 +1,5 @@
 diff --git a/docker-compose.yml b/docker-compose.yml
-index 29826c5..2d87044 100644
+index 89a3627..085b7b7 100644
 --- a/docker-compose.yml
 +++ b/docker-compose.yml
 @@ -57,7 +57,7 @@ services:
@@ -10,7 +10,7 @@ index 29826c5..2d87044 100644
 +      - traefik
      <<: *logging
  
-   prometheus:
+   wis2-gdc-prometheus:
 @@ -66,7 +66,7 @@ services:
      volumes:
        - ./wis2-gdc-monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -19,7 +19,7 @@ index 29826c5..2d87044 100644
 +      - traefik
      <<: *logging
  
-   grafana:
+   wis2-gdc-grafana:
 @@ -75,7 +75,7 @@ services:
      env_file:
        - wis2-gdc.env
@@ -97,9 +97,9 @@ index 29826c5..2d87044 100644
  networks:
 -  wis2-gdc-net:
 +  traefik:
-+    external: true
++    external: tru
 diff --git a/wis2-gdc.env b/wis2-gdc.env
-index 815f1f0..07e45d5 100644
+index 815f1f0..4bd50c6 100644
 --- a/wis2-gdc.env
 +++ b/wis2-gdc.env
 @@ -1,12 +1,12 @@
