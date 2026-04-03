@@ -97,7 +97,7 @@ index 89a3627..085b7b7 100644
  networks:
 -  wis2-gdc-net:
 +  traefik:
-+    external: tru
++    external: true
 diff --git a/wis2-gdc.env b/wis2-gdc.env
 index 815f1f0..4bd50c6 100644
 --- a/wis2-gdc.env
